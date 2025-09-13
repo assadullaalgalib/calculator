@@ -2,10 +2,10 @@
 import { useState } from "react";
 
 export default function Calculator() {
-  const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [input, setInput] = useState<string>("");
+  const [result, setResult] = useState<string>("");
 
-  const handleClick = (value) => {
+  const handleClick = (value: string) => {
     setInput((prev) => prev + value);
   };
 
@@ -16,7 +16,8 @@ export default function Calculator() {
 
   const calculate = () => {
     try {
-      setResult(eval(input)); // ⚠ only for learning, use mathjs for production
+      // using eval only for demo (unsafe in production)
+      setResult(eval(input).toString());
     } catch {
       setResult("Error");
     }
@@ -26,7 +27,7 @@ export default function Calculator() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-2">
       <div className="bg-white/20 backdrop-blur-lg shadow-2xl rounded-3xl p-4 sm:p-6 w-full max-w-xs sm:max-w-sm border border-white/30">
         <h1 className="text-xl sm:text-2xl font-extrabold mb-4 text-center text-white drop-shadow">
-          Next.js Calculator
+          ✨ Next.js Calculator ✨
         </h1>
 
         {/* Display */}
